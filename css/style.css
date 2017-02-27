@@ -1,0 +1,277 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #ffffff;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+a img {
+	border: none;
+}
+
+.header {
+	width: 960px;
+	height: 181px;
+	left: -480px;
+	margin-left: 50%;
+	position: relative;
+}
+
+#logo {
+	width: 354px;
+	height: 140px;
+}
+
+#construction {
+	top: 20px;
+	position: absolute;
+	margin-left: 540px;
+}
+
+#twitter {
+	top: 20px;
+	position: absolute;
+	margin-left: 810px;
+}
+
+.menu {
+	top: 140px;
+	position: absolute;
+	margin-left: 100px;
+}
+
+#menu-item {
+	float: left;
+	width: 190px;
+	height: 41px;
+}
+
+#menu-btn-1 {
+	display: block;
+	width: 190px;
+	height: 41px;
+	background: url('/gfx/zlec_zadanie_btn.png') no-repeat left top;
+}
+
+#menu-btn-1:hover {
+	background: url('/gfx/zlec_zadanie_inv.png') no-repeat left top;
+}
+
+#menu-btn-2 {
+	display: block;
+	width: 190px;
+	height: 41px;
+	background: url('/gfx/moje_zadania_btn.png') no-repeat left top;
+}
+
+#menu-btn-2:hover{
+	background: url('/gfx/moje_zadania_inv.png') no-repeat left top;
+}
+
+#menu-btn-3 {
+	display: block;
+	width: 190px;
+	height: 41px;
+	background: url('/gfx/lap_fuche_btn.png') no-repeat left top;
+}
+
+#menu-btn-3:hover{
+	background: url('/gfx/lap_fuche_inv.png') no-repeat left top;
+}
+
+#menu-btn-4 {
+	display: block;
+	width: 190px;
+	height: 41px;
+	background: url('/gfx/moja_fucha_btn.png') no-repeat left top;
+}
+
+#menu-btn-4:hover{
+	background: url('/gfx/moja_fucha_inv.png') no-repeat left top;
+}
+
+#darmo {
+	top: 10px;
+	position: absolute;
+	margin-left: 320px;
+}
+
+.content {
+	width: 970px;
+	margin-top: 20px;
+	left: -480px;
+	margin-left: 50%;
+	position: relative;
+}
+
+#main {
+	float: left;
+	width: 440px;
+}
+
+.mask {
+	position: relative;
+	width: 440px;
+	height: 550px;
+	overflow: hidden;
+}
+
+#box {
+	position: absolute;
+}
+
+#box div{
+	width: 440px;
+	height: 550px;
+	float: left;
+}
+
+#box p {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#slide1 {
+	margin-top: 8px;
+}
+
+#slide2 {
+	margin-top: 119px;
+}
+
+#slide3 {
+	margin-top: 79px;
+}
+
+#slide4 {
+	margin-top: 19px;
+}
+
+#slide5 {
+	margin-top: 41px;
+}
+
+#slide6 {
+	margin-top: 79px;
+}
+
+#handles_1, #handles_2{
+	width: 260px;
+}
+
+.mask_tasks {
+	position: relative;
+	width: 260px;
+	height: 200px;
+	overflow: hidden;
+	margin-top: 70px;
+}
+
+#box_tasks{
+	position: relative;
+}
+
+#box_tasks div{
+	width: 260px;
+	height: 100px;
+	float: left;
+}
+
+#box_tasks p {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#cena_miasto {
+	font-style: italic;
+	font-weight: bold;
+	color: #eb8d42;
+}
+
+#panel {
+	float: left;
+	width: 260px;
+}
+
+.footer {
+	clear: both;
+	width: 960px;
+	left: -480px;
+	margin-left: 50%;
+	position: relative;
+}
+
+#links {
+	float: right;
+	margin-top: 20px;
+}
+
+#sbrand {
+	clear: both;
+	float: right;
+	font-size: 8px;
+}
+
+#logged {
+	float: left;
+	margin-top: 20px;
+}
+
+div, p, li {
+	font-size: 14px;
+}
+
+h5 {
+	font-size: 16px;
+	padding-top: 7px;
+	padding-bottom: 10px;
+}
+
+h6 {
+	font-size: 16px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	text-align:center;
+}
+
+.buttons div {
+	font-size: 14px;
+	font-weight: bold;
+	background: #ffffff;
+	color: #3b5998;
+	margin-top: 10px;
+	padding: 10px;
+	cursor:pointer;
+}
+
+.buttons div.active, .buttons div:hover {
+	background: #b9ed15;
+	color:#fff
+}
+
+a:link {
+	color: #3b5998;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #666666;
+	text-decoration: none;
+}
+
+#fuchmistrzowie {
+	margin-top: 70px;
+}
+
+#fuchmistrzowie table {
+	margin-left: 10px;
+}
+
+.error {
+	font-style: italic;
+	font-weight: bold;
+	color: red;
+}

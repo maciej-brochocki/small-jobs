@@ -1,0 +1,20 @@
+﻿{% include "header.html" %}
+<div class="content">
+	<h5>Potwierdzenie rejestracji</h5>
+{% ifequal msg 1 %}
+	<p>Błędne wywołanie, kliknij lub skopiuj cały link podany w mailu.</p>
+{% endifequal %}
+{% ifequal msg 2 %}
+	<p>Błędne wywołanie, kliknij lub skopiuj cały link podany w mailu. Konto mogło też już zostać usunięte.</p>
+{% endifequal %}
+{% ifequal msg 3 %}
+	<p>Konto zostało już wcześniej aktywowane.</p>
+{% endifequal %}
+{% ifequal msg 4 %}
+	<p>Konto zostało usunięte, przepraszamy za utrudnienia. Zapraszamy do skorzystania z naszego serwisu!</p>
+{% endifequal %}
+{% ifequal msg 5 %}
+	<p>Konto zostało aktywowane, możesz już zacząć korzystać z serwisu po zalogowaniu!</p>
+{% endifequal %}
+</div>
+{% include "footer.html" %}

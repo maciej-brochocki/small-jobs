@@ -1,0 +1,16 @@
+﻿{% include "header.html" %}
+<div class="content">
+	<form name="login" method="post" action="">
+		<h5>Przypomnienie hasła</h5>
+{% if not "c_sent" in errors %}
+		<p>Wprowadź swój adres email w celu otrzymania hasła.</p>
+		<p>E-mail: <input type="text" name="email" value="{{email}}"/>
+			{% if "e_email" in errors %} <span class="error">Konto dla danego adresu email nie istnieje</span>{% endif %}
+		</p>
+		<p><input type="submit" value=" Przypomnij "/></p>
+{% else %}
+		<p>Przypomnienie z hasłem zostało wysłane pod wskazany adres e-mail.</p>
+{% endif %}
+	</form>
+</div>
+{% include "footer.html" %}

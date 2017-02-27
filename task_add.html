@@ -1,0 +1,52 @@
+﻿{% include "header.html" %}
+<div class="content">
+	<form name="register" method="post" action="">
+		<h5>Zleć nowe zadanie</h5>
+		<table>
+			<tr>
+				<td colspan="2">Kategoria: <select name="category">
+{% for c in categories %}
+						<option value="{{c.key.id}}"{% ifequal c.key.id category %} SELECTED{% endifequal %}>{{c.name}}</option>
+{% endfor %}
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Tytuł zadania:</td>
+				<td><input type="text" name="title" value="{{title}}"/></td>
+				<td>
+					{% if "e_no_title" in errors %} <span class="error">Pole nie może być puste</span>{% endif %}
+				</td>
+			</tr>
+			<tr>
+				<td>Opis:</td>
+				<td><textarea name="description" rows="2" cols="20">{{description}}</textarea></td>
+				<td>
+					{% if "e_no_description" in errors %} <span class="error">Pole nie może być puste</span>{% endif %}
+				</td>
+			</tr>
+			<tr>
+				<td>Informacje prywatne:</td>
+				<td><textarea name="private_info" rows="2" cols="20">{{private_info}}</textarea></td>
+			</tr>
+			<tr>
+				<td>Cena:</td>
+				<td><input type="text" name="price" value="{{price}}" size="4"/> PLN</td>
+				<td>
+					{% if "e_no_price" in errors %} <span class="error">Pole nie może być puste</span>{% endif %}
+					{% if "e_price" in errors %} <span class="error">Podaj cenę w pełnych złotówkach</span>{% endif %}
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">Termin ważności: <select name="valid_days">
+{% for value in days %}
+						<option value="{{forloop.counter}}"{% ifequal forloop.counter valid_days %} SELECTED{% endifequal %}>{{forloop.counter}} dni ({{value|date:"d.m.Y"}})</option>
+{% endfor %}
+					</select>
+				</td>
+			</tr>
+		</table>
+		<p><input type="submit" value=" Dalej "/></p>
+	</form>
+</div>
+{% include "footer.html" %}

@@ -1,0 +1,108 @@
+﻿{% include "header.html" %}
+<div class="content">
+	<form name="profile" method="post" action="" enctype="multipart/form-data">
+		<h5>Edycja profilu</h5>
+		<table>
+			<tr>
+				<td>Nazwa profilu:</td>
+				<td>{{student.nick}}</td>
+			</tr>
+			<tr>
+				<td>Ikona profilu:</td>
+				<td><img src="avatar.png?id={{student.key.id}}"/> <input type="file" name="pic" size="20"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="radio" name="type" value="0"{% ifnotequal student.type 1 %} CHECKED {% endifnotequal %}/> Student lub uczeń
+				<input type="radio" name="type" value="1"{% ifequal student.type 1 %} CHECKED {% endifequal %}/> Firma</td>
+			</tr>
+			<tr>
+				<td>Imię i nazwisko / Nazwa firmy:</td>
+				<td><input type="text" name="name" value="{{student.name}}"/></td>
+				<td>
+					{% if "e_no_name" in errors %} <span class="error">Pole nie może być puste</span>{% endif %}
+				</td>
+			</tr>
+			<tr>
+				<td>E-mail:</td>
+				<td>{{student.email}}</td>
+			</tr>
+			<tr>
+				<td>Telefon:</td>
+				<td><input type="text" name="phone" value="{{student.phone}}"/></td>
+				<td>
+					{% if "e_no_phone" in errors %} <span class="error">Pole nie może być puste</span>{% endif %}
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">Moje miasto: <select name="city">
+{% for m in miasta %}
+						<option{% ifequal m.name miasto %} SELECTED{% endifequal %}>{{m.name}}</option>
+{% endfor %}
+					</select>
+					<select name="voivodeship" onchange="voivodeshipChange()">
+{% for w in wojewodztwa %}
+						<option{% ifequal w.name wojewodztwo %} SELECTED{% endifequal %}>{{w.name}}</option>
+{% endfor %}
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Opis:</td>
+				<td><textarea name="description" rows="2" cols="20">{% if student.description %}{{student.description}}{% endif %}</textarea></td>
+			</tr>
+{% for c in categories %}
+	{% if forloop.counter0|divisibleby:"3" %}
+			<tr>
+	{% endif %}
+				<td><input type="checkbox" name="{{c.key.id}}"{% if c.key in student.specialities %} CHECKED {% endif %}/>{{c.name}}</td>
+	{% if forloop.counter|divisibleby:"3" %}
+			</tr>
+	{% endif %}
+{% endfor %}
+			<tr>
+				<td>Notyfikacje o fuchach:</td>
+				<td>
+					<select name="notify">
+						<option value="0"{% ifequal student.notify 0 %} SELECTED{% endifequal %}>o każdej nowej</option>
+						<option value="1"{% ifequal student.notify 1 %} SELECTED{% endifequal %}>raz dziennie</option>
+						<option value="2"{% ifequal student.notify 2 %} SELECTED{% endifequal %}>nie chcę</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="checkbox" name="spam"{% if student.spam %} CHECKED {% endif %}/> Wyrażam zgodę na otrzymywanie informacji marketingowych drogą elektroniczną.
+				</td>
+			</tr>
+			<tr>
+				<td>Stare hasło:</td>
+				<td><input type="password" name="old_password"/></td>
+				<td>
+					{% if "e_old_password" in errors %} <span class="error">Błędnie wprowadzone hasło</span>{% endif %}
+				</td>
+			</tr>
+			<tr>
+				<td>Nowe hasło:</td>
+				<td><input type="password" name="password"/></td>
+				<td>
+					{% if "e_no_password" in errors %} <span class="error">Pole nie może być puste</span>{% endif %}
+					{% if "e_password" in errors %} <span class="error">Błędnie powtórzone hasło</span>{% endif %}
+				</td>
+			</tr>
+			<tr>
+				<td>Powtórz hasło:</td>
+				<td><input type="password" name="password2"/></td>
+			</tr>
+		</table>
+		<input type="hidden" name="form" value="1">
+		<p><input type="submit" value=" Zapisz zmiany "/>
+	</form>
+</div>
+<script type="text/javascript">
+function voivodeshipChange() {
+	f = document.forms["profile"];
+	f.elements["form"].value=2;
+	f.submit();
+}
+</script>
+{% include "footer.html" %}

@@ -1,0 +1,116 @@
+﻿{% include "header.html" %}
+<div class="content">
+	<form name="login" method="post" action="">
+		<h5>Zaloguj się</h5>
+		<table>
+			<tr>
+				<td>E-mail:</td>
+				<td><input type="text" name="log_email" value="{{log_email}}"/></td>
+				<td>
+					{% if "e_log_email" in errors %} <span class="error">Konto dla danego adresu email nie istnieje</span>{% endif %}
+					{% if "e_not_active" in errors %} <span class="error">Konto nie zostało jeszcze aktywowane, sprawdź skrzynkę pocztową</span>{% endif %}
+				</td>
+			</tr>
+			<tr>
+				<td>Hasło:</td>
+				<td><input type="password" name="log_password"/></td>
+				<td>
+					{% if "e_log_password" in errors %} <span class="error">Błędnie wprowadzone hasło</span>{% endif %}
+				</td>
+			</tr>
+		</table>
+		<input type="hidden" name="form" value="1">
+		<p><input type="submit" value=" Zaloguj się "/> <a href="client_remind.html" target="blank">Przypomnij hasło</a></p>
+	</form>
+	<form name="register" method="post" action="">
+		<h5>Zarejestruj się</h5>
+		<table>
+			<tr>
+				<td colspan="2"><input type="radio" name="type" value="0"{% ifnotequal type "1" %} CHECKED {% endifnotequal %}/> Osoba prywatna
+				<input type="radio" name="type" value="1"{% ifequal type "1" %} CHECKED {% endifequal %}/> Firma</td>
+			</tr>
+			<tr>
+				<td>Imię i nazwisko / Nazwa firmy:</td>
+				<td><input type="text" name="name" value="{{name}}"/></td>
+				<td>
+					{% if "e_no_name" in errors %} <span class="error">Pole nie może być puste</span>{% endif %}
+				</td>
+			</tr>
+			<tr>
+				<td>E-mail:</td>
+				<td><input type="text" name="email" value="{{email}}"/></td>
+				<td>
+					{% if "e_no_email" in errors %} <span class="error">Pole nie może być puste</span>{% endif %}
+					{% if "e_email" in errors %} <span class="error">Istnieje już konto dla danego adresu email</span>{% endif %}
+				</td>
+			</tr>
+			<tr>
+				<td>Telefon:</td>
+				<td><input type="text" name="phone" value="{{phone}}"/></td>
+				<td>
+					{% if "e_no_phone" in errors %} <span class="error">Pole nie może być puste</span>{% endif %}
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">Moje miasto: <select name="city">
+{% for m in miasta %}
+						<option{% ifequal m.name miasto %} SELECTED{% endifequal %}>{{m.name}}</option>
+{% endfor %}
+					</select>
+					<select name="voivodeship" onchange="voivodeshipChange()">
+{% for w in wojewodztwa %}
+						<option{% ifequal w.name wojewodztwo %} SELECTED{% endifequal %}>{{w.name}}</option>
+{% endfor %}
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Dzielnica:</td>
+				<td><input type="text" name="district" value="{{district}}"/></td>
+			</tr>
+			<tr>
+				<td>Hasło:</td>
+				<td><input type="password" name="password"/></td>
+				<td>
+					{% if "e_no_password" in errors %} <span class="error">Pole nie może być puste</span>{% endif %}
+					{% if "e_password" in errors %} <span class="error">Błędnie powtórzone hasło</span>{% endif %}
+				</td>
+			</tr>
+			<tr>
+				<td>Powtórz hasło:</td>
+				<td><input type="password" name="password2"/></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="checkbox" name="rules"{% if rules %} CHECKED {% endif %}/> Akceptuję warunki <a href="rules.html" target="blank">regulaminu</a>.
+				</td>
+				<td>
+					{% if "e_rules" in errors %} <span class="error">Musisz zaakceptować warunki regulaminu</span>{% endif %}
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="checkbox" name="data"{% if data %} CHECKED {% endif %}/> Wyrażam zgodę na przetwarzanie moich danych osobowych potrzebnych do korzystania z serwisu, zgodnie z zapisami Ustawy o Ochronie Danych Osobowych.
+				</td>
+				<td>
+					{% if "e_data" in errors %} <span class="error">Musisz wyrazić zgodę na przetwarzanie danych osobowych</span>{% endif %}
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="checkbox" name="spam"{% if spam %} CHECKED {% endif %}/> Wyrażam zgodę na otrzymywanie informacji marketingowych drogą elektroniczną.
+				</td>
+			</tr>
+		</table>
+		<input type="hidden" name="form" value="2">
+		<p><input type="submit" value=" Zarejestruj się "/></p>
+	</form>
+</div>
+<script type="text/javascript">
+function voivodeshipChange() {
+	f = document.forms["register"];
+	f.elements["form"].value=3;
+	f.submit();
+}
+</script>
+{% include "footer.html" %}

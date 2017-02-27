@@ -1,0 +1,11 @@
+﻿Witaj,
+
+Dziękujemy za rejestrację w serwisie SzybkaFucha.
+Zakończ proces rejestacji klikając w poniższy link:
+http://www.szybkafucha.pl/client_activate.html?id={{id}}
+
+Jeśli powyższa wiadomość trafiła do Ciebie omyłkowo, kliknij w poniższy link:
+http://www.szybkafucha.pl/client_activate.html?id={{id}}&del=1
+
+Z poważniem,
+Zespół SzybkaFucha

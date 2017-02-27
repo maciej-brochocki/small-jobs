@@ -1,0 +1,31 @@
+﻿{% include "header.html" %}
+<script type="text/javascript">
+google.load('visualization', '1', {packages: ['table']});
+function drawVisualization() {
+	var dataTable = new google.visualization.DataTable();
+	dataTable.addColumn('string', 'Zadanie');
+	dataTable.addColumn('number', 'Budżet');
+	dataTable.addColumn('string', 'Kategoria');
+	dataTable.addColumn('datetime', 'Dodano');
+	dataTable.addColumn('datetime', 'Ważne do');
+	dataTable.addRows({{tasks.count}});
+{% for t in tasks %}
+	dataTable.setCell({{forloop.counter0}}, 0, '<a alt="{{t.title}}" href="task_view.html?id={{t.key.id}}">{{t.title}}</a>');
+	dataTable.setCell({{forloop.counter0}}, 1, {{t.price}}, '{{t.price}} zł');
+	dataTable.setCell({{forloop.counter0}}, 2, '{{t.category.name}}');
+{% endfor %}
+{% for d in dates_from %}
+	dataTable.setCell({{forloop.counter0}}, 3, new Date({{d|date:"Y, m-1, d, H, i, s"}}));
+{% endfor %}
+{% for d in dates_to %}
+	dataTable.setCell({{forloop.counter0}}, 4, new Date({{d|date:"Y, m-1, d, H, i, s"}}));
+{% endfor %}
+	var table = new google.visualization.Table(document.getElementById('table'));
+	table.draw(dataTable, {allowHtml: true, showRowNumber: true, page: 'enable'});
+}
+google.setOnLoadCallback(drawVisualization);
+</script>	
+<div class="content">
+	<div id="table"></div>
+</div>
+{% include "footer.html" %}

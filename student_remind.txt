@@ -1,0 +1,6 @@
+﻿Witaj {{name}},
+
+Twoje hasło to: {{password}}
+
+Z poważniem,
+Zespół SzybkaFucha
