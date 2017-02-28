@@ -1,2 +1,2 @@
 # small-jobs
-Small jobs
+This is a web site with the small jobs.
